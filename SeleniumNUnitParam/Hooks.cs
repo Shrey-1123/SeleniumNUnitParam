@@ -34,7 +34,11 @@ namespace SeleniumNUnitParam
         private void ChooseDriverInstance(BrowerType browserType)
         {
             if (browserType == BrowerType.Chrome)
-                Driver = new ChromeDriver();
+            {
+                ChromeOptions options = new ChromeOptions();
+                options.BinaryLocation = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+                Driver = new ChromeDriver(options);
+            }    
             else if (browserType == BrowerType.Firefox)
             {
                 FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
